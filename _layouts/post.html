@@ -18,17 +18,16 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          Posts
-
-          {% include timeago.html date=page.date tooltip=true %}
-          by
+          由&nbsp;
           <span class="author">
-          {% if page.author %}
-            {{ page.author }}
-          {% else %}
-            {{ site.author }}
-          {% endif %}
+            {% if page.author %}
+              {{ page.author }}
+            {% else %}
+              {{ site.author }}
+            {% endif %}
           </span>
+          &nbsp;发布于
+          {% include timeago.html date=page.date tooltip=true %}
         </div>
 
         <!-- lastmod -->
