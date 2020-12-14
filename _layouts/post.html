@@ -18,35 +18,23 @@ layout: default
       <div class="post-meta text-muted d-flex flex-column">
         <!-- Published date and author -->
         <div>
-          由&nbsp;
-          <span class="author">
-            {% if page.author %}
-              {{ page.author }}
-            {% else %}
-              {{ site.author }}
-            {% endif %}
-          </span>
-          &nbsp;发布于
+          Posted
           {% include timeago.html date=page.date tooltip=true %}
+          by
+          <span class="author">
+          {% if page.author %}
+            {{ page.author }}
+          {% else %}
+            {{ site.author }}
+          {% endif %}
+          </span>
         </div>
 
         <!-- lastmod -->
-        {%- capture filename -%}
-          {{ page.url | split: "/" | last }}
-        {%- endcapture -%}
-
-        {% for item in site.data.updates %}
-          {% assign encode_filename = item.filename | url_encode %}
-          {% if filename == encode_filename %}
-            {% assign lastmod = item.lastmod %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-
-        {% if lastmod %}
+        {% if page.last_modified_at %}
         <div>
           Updated
-          {% include timeago.html date=lastmod class="lastmod" tooltip=true %}
+          {% include timeago.html date=page.last_modified_at class="lastmod" tooltip=true %}
         </div>
         {% endif %}
 
@@ -61,7 +49,6 @@ layout: default
       </div> <!-- .post-meta -->
 
       <div class="post-content">
-
         {%- capture img_placehodler -%}
           data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
         {% endcapture%}
