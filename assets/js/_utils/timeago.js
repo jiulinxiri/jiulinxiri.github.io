@@ -18,7 +18,7 @@ $(function() {
 
     if (past.getFullYear() !== now.getFullYear()) {
       toRefresh -= 1;
-      return past.toLocaleString("en-US", {
+      return past.toLocaleString("zh_CN", {
         year: "numeric",
         month: "short",
         day: "numeric"
@@ -27,7 +27,7 @@ $(function() {
 
     if (past.getMonth() !== now.getMonth()) {
       toRefresh -= 1;
-      return past.toLocaleString("en-US", {
+      return past.toLocaleString("zh_CN", {
         month: "short",
         day: "numeric"
       });
@@ -38,17 +38,17 @@ $(function() {
     let day = Math.floor(seconds / 86400);
     if (day >= 1) {
       toRefresh -= 1;
-      return day + " day" + (day > 1 ? "s" : "") + " ago";
+      return day + " 天" + (day > 1 ? "" : "") + "前";
     }
 
     let hour = Math.floor(seconds / 3600);
     if (hour >= 1) {
-      return hour + " hour" + (hour > 1 ? "s" : "") + " ago";
+      return hour + " 小时" + (hour > 1 ? "" : "") + "前";
     }
 
     let minute = Math.floor(seconds / 60);
     if (minute >= 1) {
-      return minute + " minute" + (minute > 1 ? "s" : "") + " ago";
+      return minute + " 分钟" + (minute > 1 ? "" : "") + "前";
     }
 
     return (isLastmod ? "just" : "Just") + " now";
